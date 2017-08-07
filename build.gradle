@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.4.RELEASE'
+}
+
+apply plugin: 'java'
+
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+// NetBeans will automatically add "run" and "debug" tasks relying on the
+// "mainClass" property. You may however define the property prior executing
+// tasks by passing a "-PmainClass=<QUALIFIED_CLASS_NAME>" argument.
+//
+// Note however, that you may define your own "run" and "debug" task if you
+// prefer. In this case NetBeans will not add these tasks but you may rely on
+// your own implementation.
+//if (!hasProperty('mainClass')) {
+//    ext.mainClass = ''
+//}
+
+repositories {
+    mavenCentral()
+}
+
+//mainClassName = "com.sharath.springboot.Example"
+mainClassName = "org.sharath.oauth2.Main"
+
+bootRepackage {
+    mainClass = 'org.sharath.oauth2.Main'
+    executable = true
+}
+
+dependencies {    
+    compile group:'org.springframework.boot', name:'spring-boot-starter-web', version:'1.5.3.RELEASE'
+    compile group:'org.springframework.security', name:'spring-security-jwt', version:'1.0.7.RELEASE'
+    compile group:'org.springframework.security.oauth', name:'spring-security-oauth2', version:'2.1.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.8.RELEASE'
+    
+    testCompile group: 'org.springframework.boot', name:'spring-boot-starter-test', version:'1.5.3.RELEASE'
+    testCompile group: 'org.springframework.restdocs', name:'spring-restdocs-mockmvc', version:'1.2.1.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+}
