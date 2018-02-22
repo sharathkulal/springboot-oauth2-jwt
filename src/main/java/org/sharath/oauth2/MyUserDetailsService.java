@@ -25,6 +25,14 @@ public class MyUserDetailsService implements UserDetailsService{
 
     private final static Logger LOG = Logger.getLogger(MyUserDetailsService.class);
     
+    /**
+     * Hardcoding user values:
+     * mario/mario123 has Authority: jump, fast
+     * luigi/luigi123 has Authority: jump high, slow
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException 
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LOG.info(username);

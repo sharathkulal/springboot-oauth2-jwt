@@ -27,6 +27,13 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
  
+/**
+ * Configures Auth server with:
+ * <li> Client Credentials </li>
+ * <li> Token Enhancer</li>
+ * <li> User Details Service</li>
+ * @author Sharath Kulal
+ */
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
@@ -47,6 +54,13 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     private JwtAccessTokenConverter accessTokenConverter;
  
+    /**
+     * Setup a client with username/password and authorities.
+     * hard-coding these values to clientOne/secret
+     * this is the place where you could inject your own client service to fetch and store client data.
+     * @param clients
+     * @throws Exception 
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         InMemoryClientDetailsServiceBuilder inMemoryBuilder =  clients.inMemory();

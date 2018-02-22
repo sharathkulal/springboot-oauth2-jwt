@@ -26,6 +26,12 @@ public class MyAuthManager implements AuthenticationManager{
     @Autowired
     private MyUserDetailsService userDetailsService;
     
+    /**
+     * uses MyUserDetailsService implementation for userDetailsService
+     * @param a authentication data
+     * @return authentication data with user details if success, else return null(failure)
+     * @throws AuthenticationException 
+     */
     @Override
     public Authentication authenticate(Authentication a) throws AuthenticationException {
         LOG.info("Authentication:"+a.getName());
