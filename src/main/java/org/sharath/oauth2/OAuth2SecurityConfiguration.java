@@ -9,9 +9,7 @@ package org.sharath.oauth2;
  *
  * @author Sharath Kulal
  */
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -32,14 +30,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableWebSecurity
 public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final static Logger LOG = Logger.getLogger(OAuth2SecurityConfiguration.class);
-    
     @Autowired
     private ClientDetailsService clientDetailsService;
  
-    @Value("${jwt.signing.key}")
-    private String jwtSigningKey;
-    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -59,8 +52,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey(jwtSigningKey);
-        LOG.info("Jwt Signing Key:"+ jwtSigningKey);
+        converter.setSigningKey("123");
         return converter;
     }
  

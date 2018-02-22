@@ -24,6 +24,7 @@ repositories {
     mavenCentral()
 }
 
+//mainClassName = "com.sharath.springboot.Example"
 mainClassName = "org.sharath.oauth2.Main"
 
 bootRepackage {

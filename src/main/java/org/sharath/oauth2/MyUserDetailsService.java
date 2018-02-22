@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyUserDetailsService implements UserDetailsService{
 
-    private final static Logger LOG = Logger.getLogger(MyUserDetailsService.class);
+    private Logger LOG = Logger.getLogger(MyUserDetailsService.class);
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
