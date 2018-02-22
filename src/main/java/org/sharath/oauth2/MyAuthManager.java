@@ -5,6 +5,7 @@
  */
 package org.sharath.oauth2;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,12 +21,15 @@ import org.springframework.stereotype.Component;
 @Component(value = "MyAuthManager")
 public class MyAuthManager implements AuthenticationManager{
 
+    private final static Logger LOG = Logger.getLogger(MyAuthManager.class);
+    
     @Autowired
     private MyUserDetailsService userDetailsService;
     
     @Override
     public Authentication authenticate(Authentication a) throws AuthenticationException {
-        System.out.println(a.getCredentials());
+        LOG.info("Authentication:"+a.getName());
+        LOG.debug("Password:"+a.getCredentials());
 
         UsernamePasswordAuthenticationToken upat = null;
 
